@@ -71,7 +71,7 @@ h1{font-size:clamp(40px,8.4vw,64px);text-wrap:balance}
 
 /* Modulo */
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 26px;margin:28px 0 0;box-shadow:0 22px 40px -28px rgba(10,34,23,.35);scroll-margin-top:16px}
-.card h3{margin:0;text-align:center;font:400 clamp(26px,5vw,32px)/1.2 Gloock,serif;color:var(--ink)}
+.card>h3{margin:0;text-align:center;font:400 clamp(26px,5vw,32px)/1.2 Gloock,serif;color:var(--ink)}
 .card .hint{text-align:center;color:var(--soft);margin:8px 0 22px;font-size:17px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 label.f{display:block;margin:0 0 14px}
@@ -113,7 +113,11 @@ input[aria-invalid=true]{border-color:var(--red);background:#FFF5F3}
 .pills li{font:600 13px/1 Outfit,sans-serif;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--ink)}
 
 /* Grazie */
-.thanks{text-align:center;background:var(--blush);border-radius:24px;padding:36px 24px;margin-top:56px}
+.thanks{text-align:center;background:var(--blush);border-radius:24px;padding:36px 24px;margin-top:40px}
+.rev{max-width:520px;margin:0 auto;text-align:center}
+.rev .btn{margin:0}
+.rev-note{font-size:15.5px;color:var(--soft);margin:14px 0 0;text-wrap:balance}
+.card .tips{margin-top:24px}
 .thanks p{max-width:540px;margin:12px auto 0}
 .hearts{font-size:24px;letter-spacing:8px;margin:0 0 6px}
 
@@ -171,42 +175,11 @@ details p{margin:0 0 12px}
 <section id="come">
   <h2>Come ottenere il tuo libro in PDF <span class="red">GRATIS</span></h2>
   <ol class="steps">
-    <li><span class="num">✉️<b>1</b></span><div><h3>Lascia nome ed email</h3><p>Compila il modulo qui sotto e il pulsante per scaricare il libro compare subito, su questa pagina.</p></div></li>
-    <li><span class="num">📖<b>2</b></span><div><h3>Scarica il libro e leggilo con calma</h3><p>È il libro completo in PDF: 197 pagine, 14 esercizi pratici. Lo apri sul telefono, sul tablet o sul computer.</p></div></li>
-    <li><span class="num">⭐<b>3</b></span><div><h3>Se ti è stato utile, raccontalo</h3><p>Quando l'hai letto, se ti va, puoi lasciare una recensione sincera su Amazon. Non è obbligatoria: il libro è tuo comunque.</p></div></li>
+    <li><span class="num">✉️<b>1</b></span><div><h3>Ricevi il libro via email</h3><p>Ti mando io il libro completo in PDF, direttamente nella tua casella di posta.</p></div></li>
+    <li><span class="num">📖<b>2</b></span><div><h3>Leggilo con calma</h3><p>197 pagine e 14 esercizi pratici, da aprire sul telefono, sul tablet o sul computer.</p></div></li>
+    <li><span class="num">⭐<b>3</b></span><div><h3>Se ti è stato utile, raccontalo</h3><p>Quando l'hai letto, se ti va, puoi lasciare una recensione sincera su Amazon: trovi il pulsante qui sotto. Non è obbligatoria: il libro è tuo comunque.</p></div></li>
   </ol>
 
-  <div class="card" id="card">
-    <div class="before">
-      <h3>Scarica il tuo libro</h3>
-      <p class="hint">Il pulsante per scaricarlo compare subito, qui.</p>
-    </div>
-    <form id="f" novalidate>
-      <div class="row2">
-        <label class="f"><span>Nome</span><input type="text" id="nome" autocomplete="given-name" maxlength="60" required></label>
-        <label class="f"><span>Cognome</span><input type="text" id="cognome" autocomplete="family-name" maxlength="60" required></label>
-      </div>
-      <label class="f"><span>Email</span><input type="email" id="email" autocomplete="email" inputmode="email" maxlength="254" required></label>
-      <div class="hp" aria-hidden="true"><label>Sito web <input type="text" id="website" tabindex="-1" autocomplete="off"></label></div>
-      <label class="check key"><input type="checkbox" id="formato"><span><b>Ho capito che riceverò il libro in formato PDF</b>, da leggere su telefono, tablet o computer, e non la copia stampata.</span></label>
-      <label class="check"><input type="checkbox" id="privacy"><span>Ho letto l'<a href="#informativa" id="open-privacy">informativa sulla privacy</a> e acconsento al trattamento dei miei dati per ricevere il libro.</span></label>
-      <label class="check"><input type="checkbox" id="newsletter"><span>Puoi scrivermi per sapere com'è andata la lettura e per darmi notizie sui prossimi libri. <small>Facoltativo.</small></span></label>
-      <button class="btn" id="go" type="submit">Scarica il tuo libro</button>
-      <p class="err" id="err" role="alert"></p>
-      <p class="trust">🔒 I tuoi dati restano all'autrice: niente spam, niente cessione a terzi.</p>
-    </form>
-    <div class="done" aria-live="polite">
-      <div class="tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0A2217" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
-      <h3 id="done-title">Ecco il tuo libro</h3>
-      <p>Grazie per averlo richiesto. Buona lettura!</p>
-      <a class="btn" id="open" href="#" target="_blank" rel="noopener">Scarica il tuo libro</a>
-      <p class="small">Se il pulsante non si apre, usa questo link: <a id="url" href="#" target="_blank" rel="noopener"></a></p>
-      <ul class="tips">
-        <li>Sul telefono il PDF si apre in Google Drive: tocca i tre puntini e poi <b>Scarica</b>, così lo ritrovi anche senza connessione.</li>
-        <li>Inizia da «Il sì che ti è scappato anche oggi»: ti riconoscerai dalle prime righe.</li>
-      </ul>
-    </div>
-  </div>
 </section>
 
 <section id="regali">
@@ -228,106 +201,22 @@ details p{margin:0 0 12px}
   </div>
 </section>
 
-<div class="wrap" style="padding:0">
+<section id="recensione" class="rev">
+  <a class="btn dark" href="https://www.amazon.it/review/create-review/ref=cm_cr_othr_d_wr_but_top?ie=UTF8&amp;channel=glance-detail&amp;asin=B0HR9JPLN7" target="_blank" rel="noopener">⭐ Lascia una recensione su Amazon</a>
+  <p class="rev-note">Se scrivi la recensione, ricordati di dire che hai ricevuto una copia gratuita in PDF.</p>
+</section>
+
 <div class="thanks">
   <p class="hearts" aria-hidden="true">🤍 🌿 🤍</p>
   <h2>Grazie di far parte di questo viaggio</h2>
   <p>Ho scritto questo libro per le donne che hanno passato una vita a tenere tutto insieme. Se ti riconosci, sono felice che tu sia qui.</p>
   <p><i>Bianca Fiorentini</i></p>
 </div>
-</div>
-
-
 
 </main>
 
 <footer class="wrap">
-  <details id="informativa">
-    <summary>Informativa sulla privacy</summary>
-    <p><b>Chi tratta i tuoi dati:</b> <span class="js-controller">Bianca Fiorentini</span> · contatto: <span class="js-contact">l'indirizzo email dell'autrice</span>.</p>
-    <p><b>Quali dati:</b> nome, cognome, indirizzo email, la data della richiesta e le scelte che fai nel modulo.</p>
-    <p><b>Perché:</b> per darti la copia gratuita in PDF del libro che hai chiesto (base giuridica: la tua richiesta). Solo se spunti la casella facoltativa, l'autrice potrà scriverti per sapere com'è andata la lettura e darti notizie sui suoi libri (base giuridica: il tuo consenso, che puoi ritirare quando vuoi). Questa pagina non ti invia email automatiche.</p>
-    <p><b>Dove:</b> in un foglio Google Sheets privato dell'autrice. La pagina è ospitata da Vercel. Google e Vercel agiscono come fornitori tecnici e possono trattare i dati anche fuori dall'Unione europea, con le garanzie previste dal GDPR.</p>
-    <p><b>Per quanto tempo:</b> finché non chiedi di cancellarli.</p>
-    <p><b>I tuoi diritti:</b> puoi chiedere in ogni momento di vedere, correggere o cancellare i tuoi dati, limitarne l'uso od opporti, scrivendo al contatto qui sopra. Puoi anche presentare reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
-    <p>La copia gratuita in PDF non dipende in alcun modo da una recensione. I tuoi dati non vengono venduti né ceduti a nessuno. Versione: <span class="js-version">2026-11-18</span>.</p>
-  </details>
   <p>«La Colpa che Viene da Casa» · Bianca Fiorentini</p>
 </footer>
-
-<script>
-(function () {
-  var $ = function (id) { return document.getElementById(id); };
-  var ERRORS = {
-    nome_required: 'Scrivi il tuo nome.',
-    cognome_required: 'Scrivi il tuo cognome.',
-    email_invalid: 'Controlla l\'indirizzo email: sembra incompleto.',
-    formato_required: 'Spunta la casella del formato PDF per continuare.',
-    privacy_required: 'Per ricevere il libro spunta la casella dell\'informativa.'
-  };
-  var FIELD = { nome_required: 'nome', cognome_required: 'cognome', email_invalid: 'email', formato_required: 'formato', privacy_required: 'privacy' };
-  var KEY = 'anteprima-la-colpa';
-
-  function done(nome, url) {
-    $('done-title').textContent = nome ? 'Ecco il tuo libro, ' + nome : 'Ecco il tuo libro';
-    $('open').href = url; $('url').href = url; $('url').textContent = url;
-    $('card').classList.add('is-done');
-    $('card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  try {
-    var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
-    if (saved && saved.url) {
-      $('done-title').textContent = saved.nome ? 'Ecco il tuo libro, ' + saved.nome : 'Ecco il tuo libro';
-      $('open').href = saved.url; $('url').href = saved.url; $('url').textContent = saved.url;
-      $('card').classList.add('is-done');
-    }
-  } catch (e) {}
-
-  $('open-privacy').addEventListener('click', function () { $('informativa').open = true; });
-
-
-  fetch('/api/info').then(function (r) { return r.json(); }).then(function (d) {
-    if (!d || !d.ok) return;
-    document.querySelectorAll('.js-controller').forEach(function (e) { e.textContent = d.controller; });
-    if (d.contactEmail) document.querySelectorAll('.js-contact').forEach(function (e) {
-      var a = document.createElement('a'); a.href = 'mailto:' + d.contactEmail; a.textContent = d.contactEmail;
-      e.textContent = ''; e.appendChild(a);
-    });
-  }).catch(function () {});
-
-  $('f').addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    var err = $('err'); err.classList.remove('show');
-    ['nome', 'cognome', 'email', 'formato', 'privacy'].forEach(function (id) { $(id).removeAttribute('aria-invalid'); });
-    var data = {
-      nome: $('nome').value.trim(), cognome: $('cognome').value.trim(), email: $('email').value.trim(),
-      formato: $('formato').checked, privacy: $('privacy').checked, newsletter: $('newsletter').checked,
-      website: $('website').value,
-      source: new URLSearchParams(location.search).get('fonte') || 'anteprima'
-    };
-    var problem = !data.nome ? 'nome_required' : !data.cognome ? 'cognome_required'
-      : !/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(data.email) ? 'email_invalid'
-      : !data.formato ? 'formato_required' : !data.privacy ? 'privacy_required' : '';
-    function fail(code) {
-      err.textContent = ERRORS[code] || ('Qualcosa non ha funzionato. Riprova tra qualche minuto.' + (code ? ' (codice: ' + code + ')' : ''));
-      err.classList.add('show');
-      if (FIELD[code]) { $(FIELD[code]).setAttribute('aria-invalid', 'true'); $(FIELD[code]).focus(); }
-    }
-    if (problem) return fail(problem);
-    var btn = $('go'); btn.disabled = true; btn.textContent = 'Un attimo…';
-    fetch('/api/anteprima', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        if (d && d.ok && d.pdfUrl) {
-          try { localStorage.setItem(KEY, JSON.stringify({ nome: d.nome, url: d.pdfUrl })); } catch (e) {}
-          done(d.nome, d.pdfUrl);
-        } else fail(d && d.error);
-      })
-      .catch(function () { err.textContent = 'Connessione assente o lenta. Riprova tra qualche istante.'; err.classList.add('show'); })
-      .then(function () { btn.disabled = false; btn.textContent = 'Scarica il tuo libro'; });
-  });
-})();
-</script>
 </body>
 </html>
